@@ -73,7 +73,6 @@ exports.deleteProduct = async (req, res) => {
 // Get products by category
 exports.getProductsByCategory = async (req, res) => {
   const { categoryId } = req.params;
-
   try {
     const products = await Product.find({ category: categoryId })
       .populate('category', 'name')

@@ -17,15 +17,17 @@ const CategoryPage = () => {
  
   // Using name instead of Id for test purpose.
   const {name} = useParams();
+  console.log(name)
   let id;
   let url = '';
-  if (id) {
+  if (name) {
     //  Add Data to collection and use that Id here
-    url = `${import.meta.env.VITE_BACKEND_BASE_URL}api/products/category/${id}`;
+    url = `${import.meta.env.VITE_BACKEND_BASE_URL}/api/products/category/${name}`;
+
   } else {
     /* Fetching every product for development phase
     Remove it after setting up db locally */
-    url = `${import.meta.env.VITE_BACKEND_BASE_URL}api/products/`;
+    url = `${import.meta.env.VITE_BACKEND_BASE_URL}/api/products/`;
   }
 
   // Function to fetch data from the backend
@@ -34,7 +36,7 @@ const CategoryPage = () => {
       setLoading(true); // Set loading to true before fetching
       const response = await fetch(url); // Replace with your API URL
       const data = await response.json();
-      console.log(data)
+
       // Flatten data to include each variant as a separate item
       const flattenedData = data.flatMap(item =>
         item.variants.map(variant => ({
@@ -55,7 +57,7 @@ const CategoryPage = () => {
   };
   const fetchWishlist = async () => {
     try {
-      const response = await fetch(`${import.meta.env.VITE_BACKEND_BASE_URL}api/wishlist/${userData}`); // Replace with your wishlist API URL
+      const response = await fetch(`${import.meta.env.VITE_BACKEND_BASE_URL}/api/wishlist/${userData}`); // Replace with your wishlist API URL
       const data = await response.json();
       const variantIds = data.wishlist.map(wishItem => wishItem.variantId._id);
 
@@ -84,7 +86,7 @@ const CategoryPage = () => {
     <div className="category bg-gray-800">
       <img
         className="mx-2"
-        src={categories.find(category => category.alias === name)?.banner || null}
+        src={categories.find(category => category.id === name)?.banner || null}
         
         alt=""
       />
@@ -93,7 +95,7 @@ const CategoryPage = () => {
           <Filter items={items} setFilteredItems={setFilteredItems} />
           <img
             className="py-2"
-            src="https://github.com/IkkiOcean/AgroTech_Assets/blob/main/shop-asset/category_page/category_banner_1.jpg?raw=true"
+            src="https://i.ibb.co/WNsw8CqY/category-banner-1.jpg"
             alt=""
           />
         </div>

@@ -18,7 +18,7 @@ const ProductCard = ({ item, initialWishlistStatus, onWishlistToggle }) => {
 
     const action = isInWishlist ? 'remove' : 'add';
     const baseURL = import.meta.env.VITE_BACKEND_BASE_URL;
-    const url = `${baseURL}api/wishlist/${userData}/${action}`;
+    const url = `${baseURL}/api/wishlist/${userData}/${action}`;
     const payload = {
       productId: item._id,
       variantId: item.variant._id,
@@ -57,7 +57,7 @@ const ProductCard = ({ item, initialWishlistStatus, onWishlistToggle }) => {
       return <LoginPrompt />;
     }
     try {
-      const response = await fetch(`${import.meta.env.VITE_BACKEND_BASE_URL}api/cart/${userData}/add`, {
+      const response = await fetch(`${import.meta.env.VITE_BACKEND_BASE_URL}/api/cart/${userData}/add`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

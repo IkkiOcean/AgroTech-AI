@@ -51,11 +51,11 @@ const CropRecommendation = () => {
         inputData[name] = value;
         setFormData(inputData);
     };
-
+    const ApiUrl = import.meta.env.VITE_ML_BACKEND_BASE_URL
     const handlePredictClick = (e) => {
         e.preventDefault();
         // const url = "https://agrotech-api.onrender.com/crop_predict";
-        const url = "http://127.0.0.1:5000/crop_predict";
+        const url = `${ApiUrl}/crop_predict`;
         setIsloading(true);
         const jsonData = JSON.stringify(formData);
         fetch(url, {

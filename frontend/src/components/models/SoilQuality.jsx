@@ -191,10 +191,10 @@ const SoilQuality = () => {
             [name]: value
         }));
     };
-
+    const ApiUrl = import.meta.env.VITE_ML_BACKEND_BASE_URL
     const handlePredictClick = (e) => {
         e.preventDefault();
-        const url = "https://agrotech-api.onrender.com/soil_quality_predict";
+        const url = `${ApiUrl}/soil_quality_predict`;
         // const url = "http://127.0.0.1:5000/soil_quality_predict";
         setIsLoading(true);
 
@@ -541,7 +541,7 @@ const SoilQuality = () => {
 </h2>
 
 <div className="flex justify-center mt-6">
-    <a href="/soiltestingcentres">
+    <a target="_blank"href="https://soilhealth.dac.gov.in/soil-lab">
         <button className="px-6 py-3 bg-green-500 text-white text-lg font-semibold rounded-lg shadow-lg hover:bg-blue-700 transition-colors duration-300 ease-in-out">
             Go to Soil Testing Centres
         </button>

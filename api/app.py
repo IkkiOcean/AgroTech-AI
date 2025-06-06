@@ -397,13 +397,14 @@ crop_types = ['Barley', 'Groundnuts', 'Wheat', 'Tobacco', 'Sugarcane',
 @app.route('/soil_quality_predict', methods=['POST'])
 def soil_quality_predict():
     data = request.get_json()
+    output = ["Less Fertile","Fertile","Highly Fertile"]
     features = np.array([
         data['N'], data['P'], data['K'], data['pH'], data['EC'],
         data['OC'], data['S'], data['Zn'], data['Fe'], data['Cu'],
         data['Mn'], data['B']
     ]).reshape(1, -1)  # Convert to 2D array
     prediction = soil_quality_model.predict(features)
-    return jsonify({'prediction': str(prediction[0])})
+    return jsonify({'prediction': str(output[prediction[0]])})
 
 @app.route('/price_predict', methods=['GET'])
 def price_predict():

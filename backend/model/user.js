@@ -35,33 +35,7 @@ const userSchema = new mongoose.Schema(
     phone: { type: String },
     profilePicture: { type: String },
     googleId: { type: String, sparse: true }, // Sparse index allows for non-unique Google IDs
-    rentals: [
-      {
-        rentalId: { type: String, required: true },
-        product: { type: mongoose.Schema.Types.ObjectId, ref: "RentProduct", required: true },
-        quantity: { type: Number, default: 1 },
-        rentalDuration: { type: String, required: true },
-        rentalDate: { type: Date, default: Date.now },
-        returnDate: { type: Date },
-        status: {
-          type: String,
-          enum: ["ongoing", "returned", "cancelled", "approved", "rejected"],
-          default: "ongoing",
-        },
-      },
-    ],
-    wishlist: [
-      {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "RentProduct",
-      },
-    ],
-    cart: [
-      {
-        product: { type: mongoose.Schema.Types.ObjectId, ref: "RentProduct", required: true },
-        quantity: { type: Number, default: 1 },
-      },
-    ],
+
     points: { type: Number, default: 0 }, // Points for rewards
     referralCode: { type: String, unique: true }, // Referral code unique to each user
     referredBy: { type: mongoose.Schema.Types.ObjectId, ref: "User" }, // Referral tracking

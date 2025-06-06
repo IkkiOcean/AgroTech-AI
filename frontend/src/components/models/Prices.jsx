@@ -24,11 +24,11 @@ const Prices = () => {
     };
 
     const [receivedData, setReceivedData] = useState(initialData);
-
+    const ApiUrl = import.meta.env.VITE_ML_BACKEND_BASE_URL
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch('https://agrotech-api.onrender.com/price_predict');
+                const response = await fetch(`${ApiUrl}/price_predict`);
                 if (!response.ok) throw new Error('Network response was not ok');
                 const responseData = await response.json();
                 setReceivedData(responseData);

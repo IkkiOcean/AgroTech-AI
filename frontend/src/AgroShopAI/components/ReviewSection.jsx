@@ -20,7 +20,7 @@ const ReviewSection = ({ product_id,reviews, setReviews }) => {
     // Check if review text, rating, and user ID are valid
     if (reviewText.trim() && rating > 0 && userId.trim()) {
       try {
-        const response = await fetch(`${import.meta.env.VITE_BACKEND_BASE_URL}api/reviews`, {
+        const response = await fetch(`${import.meta.env.VITE_BACKEND_BASE_URL}/api/reviews`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json', // Set the content type to JSON
@@ -52,9 +52,10 @@ const ReviewSection = ({ product_id,reviews, setReviews }) => {
   return (
     <div className="mt-4 bg-white p-6 rounded-md shadow-md">
       <h2 className="text-2xl font-bold mb-4">Customer Reviews</h2>
+      <div className="flex">
 
       {/* Review Form */}
-      <form onSubmit={handleReviewSubmit} className="space-y-4 w-full md:w-1/2">
+      <form onSubmit={handleReviewSubmit} className="space-y-4 w-full md:w-1/2 mr-5">
         <div>
           <label className="block text-lg font-semibold">Your Name:</label>
           <input
@@ -95,10 +96,10 @@ const ReviewSection = ({ product_id,reviews, setReviews }) => {
       </form>
 
       {/* Reviews List */}
-      <div className="mt-6 w-full md:w-1/2">
+      <div className="mt-6 w-full md:w-1/2 ">
         {reviews.length > 0 ? (
           reviews.map((review, index) => (
-            <div key={index} className="border border-gray-300 rounded-md p-4 mb-2">
+            <div key={index} className="border border-gray-300 rounded-md p-4 mb-2 bg-gray-300">
               <div className="flex items-center mb-2">
                 <span className="text-yellow-500">{'★'.repeat(review.rating)}{'☆'.repeat(5 - review.rating)}</span>
                 <span className="ml-2 text-gray-600 font-semibold">- {review.user}</span>
@@ -109,6 +110,7 @@ const ReviewSection = ({ product_id,reviews, setReviews }) => {
         ) : (
           <p className="text-gray-600">No reviews yet.</p>
         )}
+      </div>
       </div>
     </div>
   );

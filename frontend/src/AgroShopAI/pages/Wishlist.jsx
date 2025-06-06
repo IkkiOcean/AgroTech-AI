@@ -5,14 +5,16 @@ import { useNavigate } from "react-router-dom"; // Ensure useNavigate is importe
 
 const Wishlist = () => {
   const { userData } = useAuth();
+  console.log(userData)
   const [wishlistItems, setWishlistItems] = useState([]);
   const navigate = useNavigate(); // Initialize the useNavigate hook
 
   useEffect(() => {
     const fetchWishlist = async () => {
+      console.log(`${import.meta.env.VITE_BACKEND_BASE_URL}/api/wishlist/${userData}`)
       try {
         const response = await fetch(
-          `${import.meta.env.VITE_BACKEND_BASE_URL}api/wishlist/${userData}`
+          `${import.meta.env.VITE_BACKEND_BASE_URL}/api/wishlist/${userData}`
         );
         const result = await response.json();
         if (response.ok) {

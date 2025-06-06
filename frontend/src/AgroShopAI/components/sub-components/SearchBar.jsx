@@ -48,7 +48,7 @@ const SearchBar = () => {
         setLoading(true);
 
         try {
-            const response = await fetch(`${import.meta.env.VITE_BACKEND_BASE_URL}api/search?query=${searchQuery}`);
+            const response = await fetch(`${import.meta.env.VITE_BACKEND_BASE_URL}/api/search?query=${searchQuery}`);
             const data = await response.json();
             setResults(data);
         } catch (error) {

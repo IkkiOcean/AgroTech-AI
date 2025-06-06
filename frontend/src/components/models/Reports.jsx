@@ -76,11 +76,11 @@ const Reports = () => {
   };
   const [receivedData, setReceivedData] = useState(initialData);
   const [error, setError] = useState(null);
-
+  const ApiUrl = import.meta.env.VITE_ML_BACKEND_BASE_URL
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const url = "https://agrotech-api.onrender.com/commodity_predict";
+        const url = `${ApiUrl}/commodity_predict`;
         const response = await fetch(url, {
           method: "POST",
           headers: {

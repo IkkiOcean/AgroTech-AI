@@ -91,7 +91,7 @@ const ShopProfile = () => {
         setLoading(true);
   
         // Use fetch to get user data
-        const response = await fetch(`${import.meta.env.VITE_BACKEND_BASE_URL}api/profile/${userData}`);
+        const response = await fetch(`${import.meta.env.VITE_BACKEND_BASE_URL}/api/profile/${userData}`);
         
         // Check if the request was successful
         if (!response.ok) {
@@ -100,6 +100,7 @@ const ShopProfile = () => {
   
         // Parse the JSON data from the response
         const data = await response.json();
+        console.log(data)
         setFormData(data);
         setPaymentMethods(data.paymentMethods)
       } catch (err) {
@@ -118,7 +119,7 @@ const ShopProfile = () => {
     try {
       setLoading(true); // Show a loader if needed
   
-      const response = await fetch(`${import.meta.env.VITE_BACKEND_BASE_URL}api/profile/${userData}`, {
+      const response = await fetch(`${import.meta.env.VITE_BACKEND_BASE_URL}/api/profile/${userData}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

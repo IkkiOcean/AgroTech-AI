@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const Categories = ({ categories }) => {
+
   return (
     <div className="category-container d-flex justify-content-center align-items-center mx-2 my-2">
       <div className="top-heading text-left bg-green-200 border-b-2 border-bottom border-green-600">
@@ -13,7 +14,7 @@ const Categories = ({ categories }) => {
         <div className="grid gap-4 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
           {categories.map((category, index) => (
             <div key={index} className="w-36 justify-center mx-auto">
-              <Link to={`category/${category.alias}`}>
+              <Link to={`category/${category.id}`}>
                 <img
                   className="rounded-full"
                   src={category.image}

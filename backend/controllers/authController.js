@@ -187,7 +187,7 @@ exports.checkEmailAvailability = async (req, res) => {
 
 exports.signupController = async (req, res) => {
   const {  firstName, lastName,username, email, password } = req.body;
-
+  console.log("hello")
   try {
     const existingUser = await User.findOne({ email });
     if (existingUser) {
@@ -196,7 +196,7 @@ exports.signupController = async (req, res) => {
 
     const verificationToken = crypto.randomBytes(32).toString('hex');
     const newUser = new User({ username,firstName,lastName, email, password, verificationToken });
-
+    console.log("user")
     await sendVerificationEmail(email, verificationToken);
 
     await newUser.save();

@@ -35,9 +35,12 @@ exports.createExtendedUser = async (req, res) => {
 // Get extended user by ID
 exports.getExtendedUserById = async (req, res) => {
   const { id } = req.params;
+  console.log(id)
   try {
     const extendedUser = await ExtendedUser.findById(id);
-
+    console.log("hello");
+    console.log(extendedUser);
+    console.log(id);
     if (!extendedUser) {
       return res.status(404).json({ error: 'Extended user not found.' });
     }
@@ -82,7 +85,7 @@ exports.getExtendedUserById = async (req, res) => {
       paymentMethods: decryptedPaymentMethods // Replace paymentMethods with decrypted ones
     };
 
-
+    console.log(combinedResult);
     res.status(200).json(combinedResult);
   } catch (error) {
     res.status(400).json({ error: error.message });

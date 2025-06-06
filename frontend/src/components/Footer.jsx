@@ -16,7 +16,6 @@ const Footer = () => {
     const companyLinks = [
         { name: 'About Us', path: '/aboutus' },
         { name: 'Contact Us', path: '/contact' },
-        { name: 'Contributors', path: '/contributor' },
     ];
 
     // Define quick links
@@ -186,41 +185,9 @@ const Footer = () => {
                     </div>
 
                     {/* Connect with Us and Legal */}
-                    <div>
-                        {/* Social Media Links */}
-                        <h3 className='text-lg font-semibold mb-4 relative inline-block after:content-[""] after:absolute after:w-0 after:h-0.5 after:bg-lime-200 after:left-0 after:-bottom-1 after:transition-all after:duration-300 hover:after:w-full'>Connect with us</h3>
-                        <div className='flex space-x-4 mt-4'>
-                            {socialMedia.map(({ Icon, link, color }, index) => (
-                                <a
-                                    key={index}
-                                    href={link}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="p-2 rounded-full transition-all duration-300 transform hover:scale-110 hover:rotate-12"
-                                    style={{
-                                        backgroundColor: 'white',
-                                        color: color,
-                                        boxShadow: '0 0 0 0 rgba(255,255,255,0.7)'
-                                    }}
-                                    onMouseEnter={(e) => {
-                                        e.currentTarget.style.backgroundColor = color;
-                                        e.currentTarget.style.color = 'white';
-                                        e.currentTarget.style.boxShadow = `0 0 0 8px rgba(255,255,255,0.3)`;
-                                    }}
-                                    onMouseLeave={(e) => {
-                                        e.currentTarget.style.backgroundColor = 'white';
-                                        e.currentTarget.style.color = color;
-                                        e.currentTarget.style.boxShadow = '0 0 0 0 rgba(255,255,255,0.7)';
-                                    }}
-                                    aria-label={`Social media link ${index + 1}`}
-                                >
-                                    <Icon size={20} />
-                                </a>
-                            ))}
-                        </div>
-
+                    <div className="flex flex-col">
                         {/* Legal Links */}
-                        <h3 className='text-lg font-semibold mt-6 mb-4 relative inline-block after:content-[""] after:absolute after:w-0 after:h-0.5 after:bg-lime-200 after:left-0 after:-bottom-1 after:transition-all after:duration-300 hover:after:w-full'>Legal</h3>
+                        <h3 className='text-lg font-semibold mb-4 relative inline-block after:content-[""] after:absolute after:w-0 after:h-0.5 after:bg-lime-200 after:left-0 after:-bottom-1 after:transition-all after:duration-300 hover:after:w-full'>Legal</h3>
                         <ul className='space-y-2'>
                             {legalLinks.map((item) => (
                                 <li key={item.name}>

@@ -112,21 +112,9 @@ const Navbar = () => {
             {/* <NavLink to="/climate" className={({ isActive }) => `block py-2 px-3 text-white rounded-lg transition-all duration-300 ${isActive ? "bg-green-700" : "hover:bg-green-500"}`} onClick={closeMenu}>Climate</NavLink> */}
 
             {/* Help Dropdown */}
-            <div className="relative" onMouseEnter={() => handleDropdown("tools")}  onMouseLeave={closeMenu} >
-              <button onClick={() => handleDropdown("tools")} className="flex items-center py-2 px-3 text-white rounded-lg hover:bg-green-500 transition-all duration-300 focus:outline-none" aria-haspopup="true" aria-expanded={openDropdown === "tools" ? "true" : "false"}>
-                Tools
-                {/* <FaChevronDown className={`ml-1 transition-transform duration-200 ${openDropdown === "tools" ? "transform rotate-180" : ""}`} /> */}
-              </button>
-              {openDropdown === "tools" && (
-                <div className="absolute left-0 mt-0 w-60 bg-white text-black rounded-lg shadow-lg z-50">
-                  <NavLink to="/PlantTaskReminder" className="block py-2 px-4 hover:bg-gray-200" onClick={closeMenu}>Plant Task Reminder</NavLink>
-                  <NavLink to="/TaskReminder" className="block py-2 px-4 hover:bg-gray-200" onClick={closeMenu}>Plant Task Reminder Advanced</NavLink>
-                  <NavLink to="/GeminiChat" className="block py-2 px-4 hover:bg-gray-200" onClick={closeMenu}>Gemini Chat</NavLink>
-                  <NavLink to="/water-management" className="block py-2 px-4 hover:bg-gray-200" onClick={closeMenu}>Water Management</NavLink>
-
-                </div>
-              )}
-            </div>
+            <NavLink to="/agroshop" exact className={({ isActive }) => `block py-2 px-3 text-white rounded-lg transition-all duration-300 ${isActive ? "bg-green-700" : "hover:bg-green-500"}`} onClick={closeMenu}>
+              AgroShop
+            </NavLink>
               
 
             {/* Help Dropdown */}
@@ -138,11 +126,8 @@ const Navbar = () => {
               {openDropdown === "help" && (
                 <div className="absolute left-0 mt-0 w-60 bg-white text-black rounded-lg shadow-lg z-50">
                   <NavLink to="/Climate" className="block py-2 px-4 hover:bg-gray-200" onClick={closeMenu}>Climate</NavLink>
+                  <NavLink to="/TaskReminder" className="block py-2 px-4 hover:bg-gray-200" onClick={closeMenu}>Plant Task Reminder Advanced</NavLink>
                   <NavLink to="/news" className="block py-2 px-4 hover:bg-gray-200" onClick={closeMenu}>News</NavLink>
-                  <NavLink to="/soiltestingcentres" className="block py-2 px-4 hover:bg-gray-200" onClick={closeMenu}>Soil Testing Centers</NavLink>
-                  <NavLink to="/ee-shops" className="block py-2 px-4 hover:bg-gray-200" onClick={closeMenu}>Electrical and Electronics Shops</NavLink>
-
-                
                   <NavLink to="/BestPractices" className="block py-2 px-4 hover:bg-gray-200" onClick={closeMenu}>Best Practices</NavLink>
                 </div>
               )}

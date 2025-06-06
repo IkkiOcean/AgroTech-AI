@@ -56,7 +56,7 @@ export default function GrievanceRedressal() {
 
     try {
       console.log('Form data:', data)
-      const response = await fetch(`${import.meta.env.VITE_BACKEND_BASE_URL}api/report`, {
+      const response = await fetch(`${import.meta.env.VITE_BACKEND_BASE_URL}/api/report`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json", // Specify JSON content type

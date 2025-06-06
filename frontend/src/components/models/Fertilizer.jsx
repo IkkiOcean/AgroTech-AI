@@ -34,11 +34,11 @@ export default function Component() {
       [name]: value,
     }))
   }
-
+  const ApiUrl = import.meta.env.VITE_ML_BACKEND_BASE_URL
   const handlePredictClick = (e) => {
     e.preventDefault();
     
-    const url = "https://agrotech-api.onrender.com/fertilizer_predict";
+    const url = `${ApiUrl}/fertilizer_predict`;
     //  const url = "http://127.0.0.1:5000/fertilizer_predict";
     setIsLoading(true);
     const jsonData = JSON.stringify(formData);

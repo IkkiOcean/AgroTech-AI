@@ -23,12 +23,16 @@ exports.getCategoryById = async (req, res) => {
 
 // Create new category
 exports.createCategory = async (req, res) => {
-  console.log(req.body)
-  const { name, description } = req.body;
+  console.log(req.body);
+  const categories = req.body; // Expecting an array of { name, description }
+
+  if (!Array.isArray(categories)) {
+    return res.status(400).json({ error: "Input should be an array of categories." });
+  }
+
   try {
-    const category = new Category({ name, description });
-    await category.save();
-    res.status(201).json(category);
+    const savedCategories = await Category.insertMany(categories);
+    res.status(201).json(savedCategories);
   } catch (err) {
     res.status(500).json({ error: err.message });
   }

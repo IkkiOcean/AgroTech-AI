@@ -23,7 +23,7 @@ const SearchResult = () => {
   let id;
   let url = `${
     import.meta.env.VITE_BACKEND_BASE_URL
-  }api/searchproduct?query=${searchQuery}`;
+  }/api/searchproduct?query=${searchQuery}`;
 
   // Function to fetch data from the backend
   const fetchData = async () => {
@@ -53,7 +53,7 @@ const SearchResult = () => {
   const fetchWishlist = async () => {
     try {
       const response = await fetch(
-        `${import.meta.env.VITE_BACKEND_BASE_URL}api/wishlist/${userData}`
+        `${import.meta.env.VITE_BACKEND_BASE_URL}/api/wishlist/${userData}`
       ); // Replace with your wishlist API URL
       const data = await response.json();
       const variantIds = data.wishlist.map(
@@ -109,7 +109,7 @@ const SearchResult = () => {
           <Filter items={items} setFilteredItems={setFilteredItems} />
           <img
             className="py-2"
-            src="https://github.com/IkkiOcean/AgroTech_Assets/blob/main/shop-asset/category_page/category_banner_1.jpg?raw=true"
+            src="https://i.ibb.co/WNsw8CqY/category-banner-1.jpg"
             alt=""
           />
         </div>

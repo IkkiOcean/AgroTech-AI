@@ -23,11 +23,17 @@ exports.getBrandById = async (req, res) => {
 
 // Create new brand
 exports.createBrand = async (req, res) => {
-  const { name, description } = req.body;
+  const brands = req.body; // Should be an array of objects
+
+  if (!Array.isArray(brands)) {
+    return res.status(400).json({ error: "Request body should be an array of brand objects." });
+  }
+
+  const validBrands = brands.filter(brand => brand.name); // Optional: filter out invalid ones
+
   try {
-    const brand = new Brand({ name, description });
-    await brand.save();
-    res.status(201).json(brand);
+    const saved = await Brand.insertMany(validBrands);
+    res.status(201).json(saved);
   } catch (err) {
     res.status(500).json({ error: err.message });
   }

@@ -5,15 +5,6 @@ import joblib
 crop_model = joblib.load('./models/crop_rotation_recommendation_model.pkl')
 
 # Define mappings
-previous_crop_mapping = {
-    'Groundnut': 1,
-    'Millets': 2,
-    'Wheat': 3,
-    'Maize': 4,
-    'Cotton': 5,
-    'Sorghum': 6,
-    'Barley': 7
-}
 
 soil_type_mapping = {
     'Loamy': 1,
@@ -23,14 +14,15 @@ soil_type_mapping = {
 }
 
 crop_mapping = {
-    1: 'Wheat',
-    2: 'Rice',
-    3: 'Millets',
-    4: 'Cotton',
-    5: 'Groundnut',
-    6: 'Maize',
-    7: 'Sorghum',
-    8: 'Barley',
+    'Corn': 0,
+    'Rice': 1,
+    'Maize': 2,
+    'Peach': 3,
+    'Bell Pepper': 4,
+    'Potato': 5,
+    'Soybean': 6,
+    'Tomato': 7,
+    'Chilli': 8
 }
 
 def recommend_crop(data):
@@ -45,7 +37,7 @@ def recommend_crop(data):
 
         # Prepare data for prediction
         input_data = pd.DataFrame([{
-            "Previous Crop": previous_crop_mapping.get(previous_crop, -1),  # Map to integer
+            "Previous Crop": crop_mapping.get(previous_crop, -1),  # Map to integer
             "Soil Type": soil_type_mapping.get(soil_type, -1),  # Map to integer
             "Moisture Level": moisture_level,
             "Nitrogen (N)": nitrogen,
@@ -54,10 +46,11 @@ def recommend_crop(data):
         }])
 
         # Make prediction
+        print(f"Input Data: {input_data}")
         prediction = crop_model.predict(input_data)
-
-        if prediction[0] in crop_mapping:
-            recommended_crop = crop_mapping[prediction[0]]
+        print(prediction)
+        if prediction[0] in crop_mapping.values():
+            recommended_crop = list(crop_mapping.keys())[int(prediction[0])]
         else:
             return {'Recommended Crop': 'No prediction available'}
 
